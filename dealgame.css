@@ -1,4 +1,3 @@
-
 *{
     box-sizing: border-box;
 }
@@ -23,7 +22,7 @@
     background-size: 70px 70px !important;
     background-repeat: no-repeat;
     background-size: auto;
-    border: solid 1px black;
+    /* border: solid 1px black; */
     font-size: 30px;
     color: white;
     display: inline-block;
@@ -69,15 +68,36 @@
     border: 1px solid;
     width: 200px;
 }
-.myCaseDiv img{
+.myCaseDiv img, .BankerDiv img{
     width: 100px;
     height: 100px;
-
-   
     
 }
 .BankerDiv
 {
     border: 1px solid;
-    width: 200px;
+    width: 400px;
+}
+
+#offerAmount{
+    font-size: 30px;
+    
+}
+
+.dondDiv
+{
+    width: 600px;
+    border: solid 1px;
+}
+
+.dondDiv button
+{
+    width: 297px;
+    height: 30px;
+   
+}
+
+.clicked{
+    background: none !important;
+    color: white !important;
 }
