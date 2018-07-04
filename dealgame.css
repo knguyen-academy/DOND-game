@@ -1,0 +1,83 @@
+
+*{
+    box-sizing: border-box;
+}
+.boardDiv{
+    display: flex;
+}
+
+.caseNumDiv
+{
+    width: 400px;
+    height: auto;
+    border: solid 1px black;
+   
+}
+
+
+.caseNumDiv span{
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    background-image: url("../Icons/case.png");
+    background-size: 70px 70px !important;
+    background-repeat: no-repeat;
+    background-size: auto;
+    border: solid 1px black;
+    font-size: 30px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.caseNumDiv span:hover
+{
+    background-image: url("../Icons/casewhite.png");
+    cursor: pointer;
+    color: black;
+}
+
+#caseValue {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#caseValue td, #caseValue th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#caseValue tr:nth-child(even){background-color: #f2f2f2;}
+
+#caseValue tr:hover {background-color: #ddd;}
+
+#caseValue th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.actionDiv{
+    display:flex;
+}
+.myCaseDiv
+{
+    border: 1px solid;
+    width: 200px;
+}
+.myCaseDiv img{
+    width: 100px;
+    height: 100px;
+
+   
+    
+}
+.BankerDiv
+{
+    border: 1px solid;
+    width: 200px;
+}
