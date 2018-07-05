@@ -37,22 +37,22 @@
     color: black;
 }
 
-#caseValue {
+#allCaseValue {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-#caseValue td, #caseValue th {
+#allCaseValue td, #allCaseValue th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#caseValue tr:nth-child(even){background-color: #f2f2f2;}
+#allCaseValue tr:nth-child(even){background-color: #f2f2f2;}
 
-#caseValue tr:hover {background-color: #ddd;}
+#allCaseValue tr:hover {background-color: #ddd;}
 
-#caseValue th {
+#allCaseValue th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -67,12 +67,22 @@
 {
     border: 1px solid;
     width: 200px;
+    height: 150px;
+    background: url("../Icons/mycase.png");
+    background-size: 100px 100px !important;
+    background-repeat: no-repeat;
+    background-position: 20% 50%; 
 }
-.myCaseDiv img, .BankerDiv img{
+
+.myCaseDiv p{
+    font-size: 40px;
+    margin-left: 25%;
+}
+/* .myCaseDiv img, .BankerDiv img{
     width: 100px;
     height: 100px;
     
-}
+} */
 .BankerDiv
 {
     border: 1px solid;
@@ -100,4 +110,8 @@
 .clicked{
     background: none !important;
     color: white !important;
+}
+
+.picked{
+    color: red;
 }
