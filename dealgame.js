@@ -6,10 +6,12 @@ var $offerAmount = $('#offerAmount');
 var $buttons = $('button');
 var $dealBtn = $('#dealBtn');
 var $nodealBtn = $('#nodealBtn');
+var $caseLeftDiv = $('#caseLeftDiv');
 var caseAmount = [0.1, 1, 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 750, 1000, 5000, 10000, 25000, 50000, 75000, 100000, 200000, 300000, 400000, 500000, 750000, 1000000];
 var caseCount = 0, casesLeft = 26;
 var myCaseNum, myCaseAmount, bankOffer = 200000, total=0, potMoney;
 var flag='Y';
+
 //Shuffle array for each game
 caseAmount.sort(function () {
     return .5 - Math.random();
@@ -43,13 +45,22 @@ function initGame() {
         total += caseAmount[i];
     }
     potMoney = total;
+    $buttons.attr("disabled", "disabled");
 }
 
-function pickCase(){
-    
+function pickCase(n){
+    var bankOfferCurrency;
+    bankOfferCal(n);
+    bankOfferCurrency = bankOffer.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    $offerAmount.text('$'+bankOfferCurrency);
+    $buttons.removeAttr("disabled");
+    $buttons.removeClass("disabled");
+    flag = 'N'
 }
-function bankOfferCal(caseVal, n) {
-    debugger
+
+
+function bankOfferCal(n) {
+    // debugger
     // potMoney = potMoney - caseVal;
     var avgMoney = potMoney / casesLeft;
     switch (n) {
@@ -83,13 +94,14 @@ function bankOfferCal(caseVal, n) {
         default:
         //do nothing
     }
-return bankOffer;
+//     var temp
+// return bankOffer;
 }
 
 // Click on case event
 $allCases.click(function () {
 
-    debugger
+    // debugger
     //get clicked case value
     var caseValue = $(this).attr('value');
 
@@ -101,7 +113,7 @@ $allCases.click(function () {
     potMoney = potMoney - caseValue;
     // button disable
     $buttons.attr("disabled", "disabled");
-    // When case is selected, remove case from the board
+    // When case is picked, remove case from the board
     $(this).addClass("clicked");
 
     if (caseCount != 1) {
@@ -116,88 +128,70 @@ $allCases.click(function () {
                 $allCaseValue.eq(i).addClass("picked");
             }
         }
+        debugger
+        var temp1=0;temp2=0;
+         temp1 = parseInt(caseValue);
+         temp2 = temp1.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+       
+        $caseLeftDiv.text(' Your picked case\'s value: $' + temp2 );
     }
-    // my first case
+    
 
+    
+    // my first case
     if (caseCount == 1) {
+       
         myCaseNum = $(this).text();
         myCaseAmount = $(this).attr('value');
         $myCaseP.text(myCaseNum);
-        $actionReq.text('Now select 5 cases')
-        alert("You choose case " + myCaseNum + ". Now please pick 6 cases to eleminate");
+        $actionReq.text('You picked case # ' +myCaseNum+ '. Now pick 6 cases to eliminate' );
+        // alert("You choose case " + myCaseNum + ". Now please pick 6 cases to eliminate");
         // console.log(temp);
     }
 
     else if (caseCount == 7) {
-        bankOfferCal(caseValue, caseCount);
-        $offerAmount.text(bankOffer);
-        $buttons.removeAttr("disabled");
-        flag = 'N'
-        // alert("Your bank offer " + bankOffer );
+
+        pickCase(7);
     }
 
     else if (caseCount == 12) {
-        bankOfferCal(caseValue, caseCount);
-        $offerAmount.text(bankOffer);
-        $buttons.removeAttr("disabled");
-        flag = 'N'
-        // alert("Your bank offer " + bankOffer );
+        pickCase(12);
+
     }
 
     else if (caseCount == 16) {
-        bankOfferCal(caseValue, caseCount);
-        $offerAmount.text(bankOffer);
-        $buttons.removeAttr("disabled");
-        flag = 'N'
-        // alert("Your bank offer " + bankOffer );
+        pickCase(16);
+
     }
 
     else if (caseCount == 19) {
-        bankOfferCal(caseValue, caseCount);
-        $offerAmount.text(bankOffer);
-        $buttons.removeAttr("disabled");
-        flag = 'N'
-        // alert("Your bank offer " + bankOffer );
+        pickCase(19);
+
     }
 
     else if (caseCount == 21) {
-        bankOfferCal(caseValue, caseCount);
-        $offerAmount.text(bankOffer);
-        $buttons.removeAttr("disabled");
-        flag = 'N'
-        // alert("Your bank offer " + bankOffer );
+        pickCase(21);
+
     }
 
     else if (caseCount == 22) {
-        bankOfferCal(caseValue, caseCount);
-        $offerAmount.text(bankOffer);
-        $buttons.removeAttr("disabled");
-        flag = 'N'
-        // alert("Your bank offer " + bankOffer );
+        pickCase(22);
+
     }
 
     else if (caseCount == 23) {
-        bankOfferCal(caseValue, caseCount);
-        $offerAmount.text(bankOffer);
-        $buttons.removeAttr("disabled");
-        flag = 'N'
-        // alert("Your bank offer " + bankOffer );
+        pickCase(23);
+  
     }
 
     else if (caseCount == 24) {
-        bankOfferCal(caseValue, caseCount);
-        $offerAmount.text(bankOffer);
-        $buttons.removeAttr("disabled");
-        flag = 'N'
-        // alert("Your bank offer " + bankOffer );
+        pickCase(24);
+
     }
 
     else if (caseCount == 25) {
-        bankOfferCal(caseValue, caseCount);
-        $offerAmount.text(bankOffer);
-        $buttons.removeAttr("disabled");
-        flag = 'N'
-        // alert("Your bank offer " + bankOffer );
+        pickCase(25);
+
     }
     else {
         //do nothing
@@ -211,29 +205,35 @@ $dealBtn.click(function () {
 
 
 $nodealBtn.click(function () {
+    debugger
     flag='Y';
     $offerAmount.text('');
+    $buttons.attr("disabled", "disabled");
+    $buttons.addClass("disabled");
     if (caseCount == 7)
-    { $actionReq.text('Now select 5 cases to eliminate')}
+    { $actionReq.text('Now pick 5 cases to eliminate')}
     if (caseCount == 12)
-    { $actionReq.text('Now select 4 cases to eliminate')}
+    { $actionReq.text('Now pick 4 cases to eliminate')}
     if (caseCount == 16)
-    { $actionReq.text('Now select 3 cases to eliminate')}
+    { $actionReq.text('Now pick 3 cases to eliminate')}
     if (caseCount == 19)
-    { $actionReq.text('Now select 2 cases to eliminate')}
+    { $actionReq.text('Now pick 2 cases to eliminate')}
     if (caseCount == 21)
-    { $actionReq.text('Now select 1 case to eliminate')}
+    { $actionReq.text('Now pick 1 case to eliminate')}
     if (caseCount == 23)
-    { $actionReq.text('Now select 1 case to eliminate')}
+    { $actionReq.text('Now pick 1 case to eliminate')}
     if (caseCount == 24)
-    { $actionReq.text('Now select 1 case to eliminate')}
+    { $actionReq.text('Now pick 1 case to eliminate')}
     if (caseCount == 25)
     { 
         var answer = confirm("Do you want to swap your case?")
     if (answer) {
-        $actionReq.text('Your swap case value is ' )
+        
+        $actionReq.text('Your swap case value is ' );
+
     }
     else {
-        $actionReq.text('Your case value is ' + myCaseAmount)
+        // $actionReq.text('Your case value is ' + myCaseAmount)
+        alert('Your case value is ' + myCaseAmount)
     }}
 })
