@@ -78,11 +78,11 @@
     font-size: 40px;
     margin-left: 25%;
 }
-/* .myCaseDiv img, .BankerDiv img{
+.myCaseDiv img, .BankerDiv img{
     width: 100px;
     height: 100px;
     
-} */
+}
 .BankerDiv
 {
     border: 1px solid;
@@ -114,4 +114,18 @@
 
 .picked{
     color: red;
+    text-decoration: line-through;
+}
+
+#actionReq{
+    color: red;
+}
+
+#offerAmount{
+    font:20px;
+    color: red;
+}
+
+h4{
+    text-decoration: underline;
 }
