@@ -7,9 +7,11 @@
 
 .caseNumDiv
 {
+    padding: 20px 10px;
     width: 400px;
     height: auto;
     border: solid 1px black;
+   
    
 }
 
@@ -108,8 +110,10 @@
 }
 
 .clicked{
+    /* display: none !important; */
     background: none !important;
-    color: white !important;
+    font-size: 0 !important; 
+    
 }
 
 .picked{
@@ -123,7 +127,7 @@
 
 #offerAmount{
     font:20px;
-    color: red;
+    color: green;
 }
 
 h4{

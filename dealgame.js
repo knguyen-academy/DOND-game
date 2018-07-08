@@ -7,8 +7,8 @@ var $buttons = $('button');
 var $dealBtn = $('#dealBtn');
 var $nodealBtn = $('#nodealBtn');
 var caseAmount = [0.1, 1, 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 750, 1000, 5000, 10000, 25000, 50000, 75000, 100000, 200000, 300000, 400000, 500000, 750000, 1000000];
-var caseCount = 0;
-var myCaseNum, myCaseAmount, casesLeft, bankOffer = 200000, total=0, potMoney;
+var caseCount = 0, casesLeft = 26;
+var myCaseNum, myCaseAmount, bankOffer = 200000, total=0, potMoney;
 var flag='Y';
 //Shuffle array for each game
 caseAmount.sort(function () {
@@ -23,7 +23,7 @@ initCasesValue();
 
 // Init case value
 function initCasesValue() {
-    debugger
+    // debugger
     // For each case, set case value = random caseAmount value 
     $allCases.each(function (index) {
         $(this).attr('value', caseAmount[index]);
@@ -50,29 +50,35 @@ function pickCase(){
 }
 function bankOfferCal(caseVal, n) {
     debugger
-    potMoney = potMoney - caseVal;
-
+    // potMoney = potMoney - caseVal;
+    var avgMoney = potMoney / casesLeft;
     switch (n) {
         case 7:
-            bankOffer = potMoney * 2 / 100
+            bankOffer = avgMoney * 1 / 10
             break;
         case 12:
-            bankOffer = potMoney * 3 / 100
+            bankOffer = avgMoney * 2 / 10
             break;
         case 16:
-            bankOffer = potMoney * 7 / 100
+            bankOffer = avgMoney * 3 / 10
             break;
         case 19:
-            bankOffer = potMoney * 10 / 100
+            bankOffer = avgMoney * 4 / 10
             break;
         case 21:
-            bankOffer = potMoney * 18 / 100
+            bankOffer = avgMoney * 5 / 10
             break;
+        case 22:
+            bankOffer = avgMoney * 6 / 10
+            break;       
         case 23:
-            bankOffer = potMoney * 30 / 100
+            bankOffer = avgMoney * 7 / 10
             break;
         case 24:
-            bankOffer = potMoney * 40 / 100
+            bankOffer = avgMoney * 8 / 10
+            break;
+        case 25:
+            bankOffer = avgMoney * 0.5
             break;
         default:
         //do nothing
@@ -88,9 +94,11 @@ $allCases.click(function () {
     var caseValue = $(this).attr('value');
 
     if (flag == 'N') return;
+    if ($(this).attr('class') == 'clicked') return;
     // increment number of cases when click
     ++caseCount;
-
+    --casesLeft;
+    potMoney = potMoney - caseValue;
     // button disable
     $buttons.attr("disabled", "disabled");
     // When case is selected, remove case from the board
@@ -226,6 +234,6 @@ $nodealBtn.click(function () {
         $actionReq.text('Your swap case value is ' )
     }
     else {
-        $actionReq.text('Your case value is ' +myCaseAmount)
+        $actionReq.text('Your case value is ' + myCaseAmount)
     }}
 })
